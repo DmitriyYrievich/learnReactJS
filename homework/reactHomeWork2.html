@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/react/0.14.0/react-dom.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/babel-core/5.6.15/browser.js"></script>
+
+	<style type="text/css">
+		.itemNew{
+			list-style-type: none;
+			background: silver;
+			border: 2px dotted orange;
+			border-radius: 5px;
+		}
+	</style>
+</head>
+<body>
+	<div id="container"></div>
+
+	<script type="text/babel">
+
+		var DynamicHello = React.createClass({
+			getInitialState: function(){
+				return {
+					displayedContacts: "Dimon Molodec"
+				}
+			},
+			changeText: function(ev){
+				console.log(ev.target.value.toUpperCase());
+				var query = ev.target.value.toUpperCase() || "Dimon Molodec";
+				
+				this.setState({
+                    displayedContacts: query
+                });
+			},
+			render: function(){
+				return (
+				<div>
+					<input type="text" onChange={this.changeText}/><br/><hr/>
+					<span>
+						{
+							this.state.displayedContacts
+						}
+					</span>
+				</div>
+				)
+			}
+		});
+		
+		ReactDOM.render( <DynamicHello/>, document.getElementById("container") );
+
+
+	</script>
+	<!-- CONTACTS.map(function(el){
+			return <Testw header="el.header" author="el.authorName" descr="el.descr"/>;
+		} -->
+</body>
+</html>
