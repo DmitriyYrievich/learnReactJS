@@ -20,15 +20,30 @@
 
 	<script type="text/babel">
 		var Calc = React.createClass({
+		    getInitialState: function(){
+                return {
+                    input1: "",
+                    input2: ""
+                }
+            },
+			changeVal: function(e){
+				console.log(e.target.value);
+					
+				this.setState({
+                    input1: ( e.target.classList.contains("in_1") ? e.target.value : false ),
+                    input2: ( e.target.classList.contains("in_2") ? e.target.value : false )
+                });
+			},
 		    myCalc: function(e){
-		    	alert(e.target.value);
 		    	console.log(e.target.value);
+		    	console.log(this.state.input1);
+		    	console.log(this.state.input2);
 		    },
 			render: function(){
 				return(
 					<div>
-						<input type="text"/>
-						<input type="text"/>
+						<input type="text" className="in_1" onChange={this.changeVal}/>
+						<input type="text"  className="in_2" onChange={this.changeVal}/>
 						<div className="operat">
 							<button onClick={this.myCalc}>+</button>
 							<button>-</button>
