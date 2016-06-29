@@ -59,8 +59,10 @@
 					<div>
 						<ul>
 							{
+								CONTACTS.map(function(el){
+									return <Testw header={el.header} author={el.authorName} descr={el.descr}/>
+								})
 								
-								<Testw header="el.header" author="el.authorName" descr="el.descr"/>
 							}
 						</ul>
 					</div>
